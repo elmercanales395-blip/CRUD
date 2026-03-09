@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// GET todos los productos
 app.get("/products", async (req, res) => {
   try {
     const products = await prisma.product.findMany();
@@ -20,11 +19,10 @@ app.get("/products", async (req, res) => {
   }
 });
 
-// POST crear producto
 app.post("/products", async (req, res) => {
   const { name, description, price, category } = req.body;
 
-  // Lista de imágenes por categoría
+  
   const categoryImages = {
     clothes: "https://source.unsplash.com/400x300/?clothes",
     shoes: "https://source.unsplash.com/400x300/?shoes",
@@ -34,7 +32,7 @@ app.post("/products", async (req, res) => {
     default: "https://source.unsplash.com/400x300/?product",
   };
 
-  // Imagen según categoría
+
   const image = categoryImages[category?.toLowerCase()] || categoryImages.default;
 
   try {
@@ -48,7 +46,7 @@ app.post("/products", async (req, res) => {
   }
 });
 
-// PUT actualizar producto
+
 app.put("/products/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, price, category } = req.body;
@@ -75,7 +73,7 @@ app.put("/products/:id", async (req, res) => {
   }
 });
 
-// DELETE producto
+
 app.delete("/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
