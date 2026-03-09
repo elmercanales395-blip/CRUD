@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className="container">
-      {/* Formulario */}
+    
       <div className="form-card">
         <h2>Agregar Producto</h2>
         <form onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ function App() {
         </form>
       </div>
 
-      {/* Lista de productos */}
+    
       <h2>Productos Disponibles</h2>
       <div className="product-grid">
         {products.map(p => (
